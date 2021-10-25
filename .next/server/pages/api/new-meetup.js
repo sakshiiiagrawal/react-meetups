@@ -114,7 +114,7 @@ __webpack_require__.r(__webpack_exports__);
 async function handler(req, res) {
   if (req.method === "POST") {
     const data = req.body;
-    const client = await mongodb__WEBPACK_IMPORTED_MODULE_0__["MongoClient"].connect("mongodb+srv://sakshiiiagrawal:CTXo0kUuR0BI7oPC@cluster0.qdlmv.mongodb.net/meetups?retryWrites=true&w=majority");
+    const client = await mongodb__WEBPACK_IMPORTED_MODULE_0__["MongoClient"].connect("mongodb+srv://sakshiiiagrawal:NLKq4eKMfQqo2NjH@cluster0.qdlmv.mongodb.net/meetups?retryWrites=true&w=majority");
     const db = client.db();
     const meetupsCollection = db.collection("meetups");
     const result = await meetupsCollection.insertOne(data);

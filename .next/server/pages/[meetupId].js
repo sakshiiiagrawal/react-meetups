@@ -204,7 +204,7 @@ function MeetupDetails(props) {
 
 async function getStaticPaths() {
   //fetch id from an API
-  const client = await external_mongodb_["MongoClient"].connect("mongodb+srv://sakshiiiagrawal:CTXo0kUuR0BI7oPC@cluster0.qdlmv.mongodb.net/meetups?retryWrites=true&w=majority");
+  const client = await external_mongodb_["MongoClient"].connect("mongodb+srv://sakshiiiagrawal:NLKq4eKMfQqo2NjH@cluster0.qdlmv.mongodb.net/meetups?retryWrites=true&w=majority");
   const db = client.db();
   const meetupsCollection = db.collection("meetups");
   const meetups = await meetupsCollection.find({}, {
@@ -212,7 +212,7 @@ async function getStaticPaths() {
   }).toArray();
   client.close();
   return {
-    fallback: false,
+    fallback: 'blocking',
     paths: meetups.map(meetup => ({
       params: {
         meetupId: meetup._id.toString()
@@ -224,7 +224,7 @@ async function getStaticProps(context) {
   // fetch data for a single meetup
   const meetupId = context.params.meetupId; //fetch data from an API
 
-  const client = await external_mongodb_["MongoClient"].connect("mongodb+srv://sakshiiiagrawal:CTXo0kUuR0BI7oPC@cluster0.qdlmv.mongodb.net/meetups?retryWrites=true&w=majority");
+  const client = await external_mongodb_["MongoClient"].connect("mongodb+srv://sakshiiiagrawal:NLKq4eKMfQqo2NjH@cluster0.qdlmv.mongodb.net/meetups?retryWrites=true&w=majority");
   const db = client.db();
   const meetupsCollection = db.collection("meetups");
   const selectedMeetup = await meetupsCollection.findOne({
